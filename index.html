@@ -41,6 +41,7 @@
       gap: 14px;
       background: var(--paper);
       transition: opacity 0.3s ease;
+      z-index: 30;
     }
 
     .loading.hide {
@@ -76,6 +77,51 @@
       border: none;
       background: var(--paper);
     }
+
+    /* ปุ่มลอยมุมขวาล่าง สำหรับข้ามไปหน้าแอดมิน */
+    .admin-link {
+      position: fixed;
+      right: 14px;
+      bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+      z-index: 20;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 15px 9px 12px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 13px;
+      line-height: 1;
+      text-decoration: none;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+      opacity: 0.45;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .admin-link:hover,
+    .admin-link:focus-visible {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .admin-link:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 2px;
+    }
+
+    .admin-link svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* บนมือถือไม่มี hover จึงตั้งให้เห็นชัดขึ้นตั้งแต่แรก */
+    @media (hover: none) {
+      .admin-link {
+        opacity: 0.8;
+      }
+    }
   </style>
 </head>
 
@@ -95,6 +141,13 @@
     src="https://script.google.com/macros/s/AKfycbxhaB1TPZj44enHcDN0uAE9eKxHLmSW6auFWvl4Sxfp6D8ByatoZjLBD2a-mr3rAyW5Ew/exec"
     onload="document.getElementById('loadingScreen').classList.add('hide')" title="แบบฟอร์มแจ้งซ่อม">
   </iframe>
+
+  <a class="admin-link" href="admin.html" title="ไปหน้าแอดมินระบบแจ้งซ่อม">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+    </svg>
+    หน้าแอดมิน
+  </a>
 
 </body>
 
